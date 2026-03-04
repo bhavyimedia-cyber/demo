@@ -9,4 +9,5 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["node", "server.apiv2.js"]
+
+CMD ["node", "scraper.apiv2.js"]
