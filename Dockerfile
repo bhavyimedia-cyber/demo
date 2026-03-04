@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.41.1-jammy
+FROM mcr.microsoft.com/playwright:v1.58.0-jammy
 
 WORKDIR /app
 
@@ -11,3 +11,4 @@ EXPOSE 3000
 
 
 CMD ["node", "scraper.apiv2.js"]
+
