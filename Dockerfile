@@ -10,5 +10,5 @@ COPY . .
 EXPOSE 3000
 
 
-CMD ["node", "scraper.apiv4.js"]
+CMD ["node", "scraper.apiv5.js"]
 
