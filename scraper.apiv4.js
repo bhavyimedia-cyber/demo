@@ -23,7 +23,7 @@ const SEARCH_TYPE_MAP = {
 
 // matchType only applies when searchType === "wordmark"
 const MATCH_TYPE_MAP = {
-    startswith: "Start With",   // default
+    startwith: "Start With",   // default
     contains: "Contains",
     matchwith: "Match With",
 };
@@ -155,7 +155,7 @@ async function solveCaptchaWithAZ(imageBase64) {
 async function scrapeTrademarks({ keyword, tmClass, searchType, matchType }) {
     // Resolve to site label values
     const resolvedSearchType = SEARCH_TYPE_MAP[(searchType || "wordmark").toLowerCase()];
-    const resolvedMatchType = MATCH_TYPE_MAP[(matchType || "startswith").toLowerCase()];
+    const resolvedMatchType = MATCH_TYPE_MAP[(matchType || "startwith").toLowerCase()];
 
     const browser = await chromium.launch({ headless: true }).catch((err) => {
         throw new ScrapingError(`Failed to launch browser: ${err.message}`, "BROWSER_LAUNCH_ERROR");
@@ -351,7 +351,7 @@ async function handleSearch(req, res, params) {
     catch (err) { return errorResponse(res, 400, err); }
  
     const resolvedMatchType = searchType.toLowerCase() === "wordmark"
-        ? (matchType || "startswith")
+        ? (matchType || "startwith")
         : null;
  
     log("REQUEST", `keyword="${keyword}" tmClass=${tmClass || "any"} searchType=${searchType} matchType=${resolvedMatchType}`);
